@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Options = () => {
+const Options = (  { children } ) => {
     return (
         <div>
-            
+            Options
+            {children}
         </div>
     )
 }
