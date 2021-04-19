@@ -2,7 +2,7 @@ import { createContext, useState, useRef, useEffect} from 'react'
 import { io } from 'socket.io-client'
 import Peer from 'simple-peer'
 
-const socketContext = createContext()
+const SocketContext = createContext()
 
 const socket = io ('http://localhost:3001')
 
@@ -83,7 +83,26 @@ const ContextProvider = ( {children}) => {
 
         window.location.reload()
     }
-    
+
+    return (
+         <SocketContext.Provider value={{
+            call,
+            callAccepted,
+            myVideo,
+            userVideo,
+            stream,
+            name,
+            setName,
+            callEnded,
+            me,
+            callUser,
+            leaveCall,
+            answerCall,      
+         }}>
+             { children}
+
+         </SocketContext.Provider>
+    )
 }
 
-export default ContextProvider 
+export {ContextProvider, SocketContext} 
