@@ -7,8 +7,17 @@ import Peer from 'simple-peer'
 const socket = io ('http://localhost:3001')
 
 const ContextProvider = ( {children}) => {
-    useEffect(() => {
+    const [stream, setStream] = useState(null)
 
+    const myVideo = useRef()
+
+    useEffect(() => {
+        navigator.medisDevices.getUserMedia({ video: true,  audio: true})
+            .then((currentStream) => {
+                setStream(currentStream)
+
+                myVideo.current.srcObject =currentStream
+            })
     })
 
     const answerCall = () => {
