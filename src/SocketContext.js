@@ -1,4 +1,4 @@
-import React, { createContext, useState, useRef, useEffect} from 'react'
+import { createContext, useState, useRef, useEffect} from 'react'
 
 import { io } from 'socket.io-client'
 
@@ -8,6 +8,8 @@ const socket = io ('http://localhost:3001')
 
 const ContextProvider = ( {children}) => {
     const [stream, setStream] = useState(null)
+    const [me, setMe] = useState('')
+    const  [call, setCall] = useState({})
 
     const myVideo = useRef()
 
@@ -17,6 +19,12 @@ const ContextProvider = ( {children}) => {
                 setStream(currentStream)
 
                 myVideo.current.srcObject =currentStream
+            })
+
+            socket.on('me', (id) => setMe(id))
+
+            socket.on('calluser', ({from, name: callerName, signal}) => {
+                setCall({ isReceivedCall: true, from, name: callerName, signal })
             })
     })
 
