@@ -24,10 +24,25 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const VideoPlayer = (   ) => {
+    const classes = useStyles()
+
     return (
-        <div>
-            VideoPlayer
-        </div>
+        <Grid container className={classes.gridContainer}>
+            {/* Our Video */}
+            <Paper className={classes.paper}>
+                <Grid item xs={12} md={6}>
+                    <Typography variant='h5' gutterBottom> Name</Typography>
+                    <video playsInLine muted ref={null} autoPlay className={classes.video}/>
+                </Grid>
+            </Paper>
+            {/* User's Video */}
+            <Paper className={classes.paper}>
+                <Grid item xs={12} md={6}>
+                    <Typography variant='h5' gutterBottom> Name</Typography>
+                    <video playsInLine ref={null} autoPlay className={classes.video}/>
+                </Grid>
+            </Paper>
+        </Grid>
     )
 }
 
