@@ -1,8 +1,8 @@
 import { createContext, useState, useRef, useEffect} from 'react'
-
 import { io } from 'socket.io-client'
-
 import Peer from 'simple-peer'
+
+const socketContext = createContext()
 
 const socket = io ('http://localhost:3001')
 
@@ -76,8 +76,14 @@ const ContextProvider = ( {children}) => {
     }
 
     const leaveCall =() => {
+        setCallEnded(true)
 
+        //ends the call and disconnects from users camera and audio
+        connectionRef.current.destroy()
+
+        window.location.reload()
     }
+    
 }
 
 export default ContextProvider 
