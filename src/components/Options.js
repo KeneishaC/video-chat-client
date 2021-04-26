@@ -73,7 +73,7 @@ const Options = (  { children } ) => {
                             ) : (
                                 <Button
                                 variant="contained" 
-                                color="primaary" 
+                                color="primary" 
                                 startIcon={ <Phone fontSize="large" /> }
                                 fullWidth
                                 onClick={() => callUser(idToCall)}
@@ -85,9 +85,8 @@ const Options = (  { children } ) => {
                         </Grid>
                     </Grid>
                 </form>
-           </Paper>
-           Options
            {children}
+           </Paper>
        </Container>
     )
 }
