@@ -52,9 +52,36 @@ const Options = (  { children } ) => {
                             <TextField label="Name" value={name} onChange={(e) => setName(e.target.value)} fullWidth/>
                             <CopyToClipboard>
                                 <Button variant="contained" color="primary" fullWidth startIcon={ <Assignment fontSize="large" /> }>
-
+                                    Copy Your ID
                                 </Button>
                             </CopyToClipboard>
+                        </Grid>
+                        <Grid item xs={12} md={6} className="{classes.padding}">
+                            <Typography gutterbottom variant="h6">Make a Call</Typography>
+                            <TextField label="ID to Call" value={idToCall} onChange={(e) => setIdToCall(e.target.value)} fullWidth/>
+                            {callAccepted && !callEnded ? (
+                                <Button 
+                                variant="contained" 
+                                color="secondary" 
+                                startIcon={ <PhoneDisabled fontSize="large" /> }
+                                fullWidth
+                                onClick={leaveCall}
+                                className={classes.margin}
+                                >
+                                  Hang Up 
+                                </Button>
+                            ) : (
+                                <Button
+                                variant="contained" 
+                                color="primaary" 
+                                startIcon={ <Phone fontSize="large" /> }
+                                fullWidth
+                                onClick={() => callUser(idToCall)}
+                                className={classes.margin}
+                                >
+                                  Call
+                                </Button>
+                            )}
                         </Grid>
                     </Grid>
                 </form>
