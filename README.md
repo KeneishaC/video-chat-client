@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c0bb9cec-69ac-4628-9ac5-a35659b81dd8/deploy-status)](https://app.netlify.com/sites/lets-video-chat/deploys)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
